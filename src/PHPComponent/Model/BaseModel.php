@@ -91,39 +91,39 @@ abstract class BaseModel
     }
 
     protected function init($object, $publicField, $detailField, $systemField, $mode = BaseModel::PUBLIC, $options = array()){
-        switch ($mode) {
-            case BaseModel::SYSTEM:
+        // switch ($mode) {
+        //     case BaseModel::SYSTEM:
                 $this->assignField($object, $systemField, $options); 
-            case BaseModel::DETAIL:
+            // case BaseModel::DETAIL:
                 $this->assignField($object, $detailField, $options);
-            case BaseModel::PUBLIC:
+            // case BaseModel::PUBLIC:
                 $this->assignField($object, $publicField, $options);
-        }
+        // }
     }
 
     protected static function initGetFields($publicField, $detailField, $systemField, $mode = BaseModel::PUBLIC){
         $result = array("ID");
-        switch ($mode) {
-            case BaseModel::SYSTEM:
+        // switch ($mode) {
+            // case BaseModel::SYSTEM:
                 $result = array_merge(array_map(function ($data) { return $data['key']; }, $systemField), $result);
-            case BaseModel::DETAIL:
+            // case BaseModel::DETAIL:
                 $result = array_merge(array_map(function ($data) { return $data['key']; }, $detailField), $result);
-            case BaseModel::PUBLIC:
+            // case BaseModel::PUBLIC:
                 $result = array_merge(array_map(function ($data) { return $data['key']; }, $publicField), $result);
-        }
+        // }
         return $result;
     }
 
     protected static function initGetFieldsWithType($publicField, $detailField, $systemField, $mode = BaseModel::PUBLIC){
         $result = array(array("key" => "ID", "type"=> BaseTypeEnum::STRING),);
-        switch ($mode) {
-            case BaseModel::SYSTEM:
+        // switch ($mode) {
+            // case BaseModel::SYSTEM:
                 $result = array_merge(array_map(function ($data) { return $data; }, $systemField), $result);
-            case BaseModel::DETAIL:
+            // case BaseModel::DETAIL:
                 $result = array_merge(array_map(function ($data) { return $data; }, $detailField), $result);
-            case BaseModel::PUBLIC:
+            // case BaseModel::PUBLIC:
                 $result = array_merge(array_map(function ($data) { return $data; }, $publicField), $result);
-        }
+        // }
         return $result;
     }
 
