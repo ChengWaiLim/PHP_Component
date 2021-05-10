@@ -75,7 +75,7 @@ abstract class DB{
     private static function updateRaw($parameters, $class){
         unset($parameters['createdDate']);
         unset($parameters['modifiedDate']);
-        unset($parameters['isDeleted']);
+        // unset($parameters['isDeleted']);
         if(method_exists($class, "permissionUpdateHandling") && !$class::permissionUpdateHandling($parameters, self::getByID($class, $parameters["ID"], BaseModel::SYSTEM)))
             throw new Exception("Role Permission Denied");
         $parameters = (array) $parameters;
